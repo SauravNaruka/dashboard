@@ -1,0 +1,23 @@
+.chart-area {
+  width: 1000px;
+  height: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-wrapper {
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.dashboard-title {
+  flex-grow: 1;
+  text-align: center;
+}

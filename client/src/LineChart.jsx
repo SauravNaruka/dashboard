@@ -54,31 +54,37 @@ export const options = {
 };
 
 const labels = Array.from(Array(50)).map((_, index) => {
+  return `01-05-2024  08:${index < 10 ? 0 : ""}${index}`;
+});
+
+const approved = labels.map((label) => {
   return {
-    dateTime: `18-04-2024  08:${index < 10 ? 0 : ""}${index}`,
-    severity: Math.floor(Math.random() * 8),
+    dateTime: label,
+    count: Math.floor(Math.random() * 8),
+  };
+});
+const rejected = labels.map((label) => {
+  return {
+    dateTime: label,
+    count: Math.floor(Math.random() * 6),
   };
 });
 
 export function LineChart() {
   const data = {
-    labels: labels.map(({ dateTime }) => dateTime),
+    labels: labels.map((label) => label),
     datasets: [
       {
         label: "Approved",
-        data: labels.map(({ severity }) => {
-          return severity < 4 ? severity : 0;
-        }),
+        data: approved.map(({ count }) => count),
         lineTension: 0.3,
         borderColor: "rgb(18, 194, 150)",
         backgroundColor: "rgb(221, 246, 239)",
-        fill: true,
+        fill: 0,
       },
       {
         label: "Rejected",
-        data: labels.map(({ severity }) => {
-          return severity >= 4 ? severity : 3.5;
-        }),
+        data: rejected.map(({ count }) => count),
         lineTension: 0.3,
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgb(218, 222, 249)",
